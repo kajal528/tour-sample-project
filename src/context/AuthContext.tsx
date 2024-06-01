@@ -21,7 +21,7 @@ export const AuthProvider = (props: { children: ReactNode }) => {
         name: "Jack",
         email: "jack@example.com",
         password: "qwerty",
-        avatar: "https://i.pravatar.cc/100?u=zz",
+        avatar: "https://ui-avatars.com/api/?background=0D8ABC&color=fff",
       };
     
 

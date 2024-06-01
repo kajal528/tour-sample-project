@@ -3,11 +3,9 @@ import styles from './CityList.module.css';
 import Spinner from '../components/Spinner';
 import Message from './Message';
 import { useCities } from '../context/CityContext';
-import { useAuthContext } from '../context/AuthContext';
 
 const CityList = () => {  
   const {cities, isLoading} = useCities();
-    console.log(useAuthContext());
     
     if(isLoading) return <Spinner/>;
 

@@ -1,7 +1,7 @@
 import type { Handler } from "@netlify/functions"
 import data from '../data/cities.json';
 
-export const handler: Handler = async (event, context) => {
+export const handler: Handler = async (event) => {
   const id = event.path.match(/\/([0-9]+)/);
   if(id && event.httpMethod === 'GET') {
     const result = data.cities.find(ele=>ele.id===id[1])

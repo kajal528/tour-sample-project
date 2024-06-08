@@ -6,7 +6,7 @@ export default function Homepage() {
 
   return (
     <main className={styles.homepage} style={{
-      backgroundImage: "../assets/bg.jpg"
+      backgroundImage: ""
     }}>
       <PageNav/>
       <section>

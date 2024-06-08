@@ -12,7 +12,7 @@ import City from './components/City'
 import Form from './components/Form'
 import { CitiesProvider } from './context/CityContext'
 import { AuthProvider } from './context/AuthContext'
-import ProtectedRoute from './pages/ProtectedRoute'
+
 
 function App() {
 
@@ -25,9 +25,7 @@ function App() {
             <Route path='product' element={<Product />}></Route>
             <Route path='pricing' element={<Pricing />}></Route>
             <Route path='app' element={
-            <ProtectedRoute>
             <AppLayout />
-            </ProtectedRoute>
             }>
               <Route index element={<Navigate to='cities' replace />} />
               <Route path='cities' element={<CityList />} />

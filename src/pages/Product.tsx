@@ -1,5 +1,4 @@
 import styles from "./Product.module.css";
-import productImg from '../assets/img-1.jpg'
 import PageNav from "../components/PageNav";
 
 export default function Product() {
@@ -8,7 +7,7 @@ export default function Product() {
       <PageNav/>
       <section>
         <img
-          src="../assets/img-1.jpg"
+          src=""
           alt="person with dog overlooking mountain with sunset"
         />
         <div>

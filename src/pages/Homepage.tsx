@@ -5,7 +5,9 @@ import { Link } from "react-router-dom";
 export default function Homepage() {
 
   return (
-    <main className={styles.homepage}>
+    <main className={styles.homepage} style={{
+      backgroundImage: "../assets/bg.jpg"
+    }}>
       <PageNav/>
       <section>
         <h1>

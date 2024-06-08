@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState , ReactNode} from "react
 import { CityContextProps, CityItemProps} from "../types/types";
 
 const CitiesContext = createContext<CityContextProps|null>(null);
-const BASE_URL = 'http://localhost:3000';
+const BASE_URL = 'http://localhost:8888';
 
 export const useCities = ()=>{
     const cityContext = useContext(CitiesContext);
@@ -23,13 +23,13 @@ export const useCities = ()=>{
 
     async function getCities(){
       try{
-        setIsLoading(true)
-        const response = await fetch('http://localhost:3000/cities');
+        setIsLoading(true);
+        const response = await fetch(`${BASE_URL}/.netlify/functions/functions`);
         const result = await response.json();
-        setCities(result);
+        setCities(result.data.cities);
       }
       catch(error){
-        alert("Error occurred while loading the data.")
+        alert("Error occurred while loading the data.");
       }
       finally{
         setIsLoading(false);
@@ -38,10 +38,10 @@ export const useCities = ()=>{
 
     async function getCity(id: string){
       try{
-        setIsLoading(true)
-        const response = await fetch(`${BASE_URL}/cities/${id}`);
+        setIsLoading(true);
+        const response = await fetch(`${BASE_URL}/.netlify/functions/functions/${id}`);
         const result = await response.json();
-        setCurrentCity(result);
+        setCurrentCity(result.result);
       }
       catch(error){
         alert("Error occurred while loading the data.")
@@ -55,15 +55,15 @@ export const useCities = ()=>{
     async function addCity(city: CityItemProps){
      try{
          setIsLoading(true);
-         const response = await fetch(`${BASE_URL}/cities`, {
+         const response = await fetch(`${BASE_URL}/.netlify/functions/functions`, {
            method: 'POST',
            body: JSON.stringify(city),
            headers:{
              "Content-Type": 'application/json'
            }
          });
-         const result = await response.json();
-         setCities([...cities, result]);
+          const result = await response.json();
+          setCities([...cities, result]);
        }
          catch(error){
            alert("Error occurred while creating the data.")
@@ -76,13 +76,13 @@ export const useCities = ()=>{
      async function deleteCity(id: string){
       try{
           setIsLoading(true);
-          const response = await fetch(`${BASE_URL}/cities/${id}`, {
+          const response = await fetch(`${BASE_URL}/.netlify/functions/functions/${id}`, {
             method: 'DELETE'
           });
-          await response.json();
-          setCities((cities)=>
-            cities.filter((city)=> city.id!==id)
-          )
+          const result = await response.json();
+          console.log(result);
+          
+          setCities(result.data.cities);
         }
           catch(error){
             alert("Error occurred while deleting the data.")

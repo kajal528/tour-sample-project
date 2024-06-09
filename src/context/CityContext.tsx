@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState , ReactNode} from "react
 import { CityContextProps, CityItemProps} from "../types/types";
 
 const CitiesContext = createContext<CityContextProps|null>(null);
-const BASE_URL = 'http://localhost:8888';
+const BASE_URL = 'https://main--sample-tour-app.netlify.app';
 
 export const useCities = ()=>{
     const cityContext = useContext(CitiesContext);
